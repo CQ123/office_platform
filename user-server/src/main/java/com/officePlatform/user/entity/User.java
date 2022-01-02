@@ -16,7 +16,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author cq
- * @since 2021-12-31
+ * @since 2022-01-02
  */
 @Data
   @EqualsAndHashCode(callSuper = false)
@@ -32,14 +32,18 @@ public class User implements Serializable {
 
     private String password;
 
-    private Integer level;
+    private String salt;
 
     private String email;
 
     private String token;
 
+    private Integer level;
+
       @TableField(fill = FieldFill.INSERT)
       private LocalDateTime createTime;
+
+    private LocalDateTime activationTime;
 
 
 }

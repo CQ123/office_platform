@@ -12,14 +12,9 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author cq
- * @since 2021-12-31
+ * @since 2022-01-02
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
-    @Override
-    public boolean sendCode(String email) {
-
-        return false;
-    }
 }

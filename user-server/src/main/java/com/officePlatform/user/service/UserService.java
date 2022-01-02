@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author cq
- * @since 2021-12-31
+ * @since 2022-01-02
  */
 public interface UserService extends IService<User> {
-    boolean sendCode(String email);
+
 }

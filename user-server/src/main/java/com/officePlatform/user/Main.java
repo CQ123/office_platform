@@ -21,7 +21,7 @@ public class Main {
         dataSourceConfig.setDriverName("com.mysql.jdbc.Driver");
         dataSourceConfig.setUsername("root");
         dataSourceConfig.setPassword("password");
-        dataSourceConfig.setUrl("jdbc:mysql://localhost:3306/user_server?useUnicode=true&characterEncoding=UTF-8");
+        dataSourceConfig.setUrl("jdbc:mysql://www.chenqi.club:3306/user_server?useUnicode=true&characterEncoding=UTF-8");
         autoGenerator.setDataSource(dataSourceConfig);
         GlobalConfig globalConfig = new GlobalConfig();
         globalConfig.setOpen(false);
