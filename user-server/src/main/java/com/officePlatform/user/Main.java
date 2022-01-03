@@ -41,6 +41,7 @@ public class Main {
         strategyConfig.setEntityLombokModel(true);
         strategyConfig.setNaming(NamingStrategy.underline_to_camel);
         strategyConfig.setColumnNaming(NamingStrategy.underline_to_camel);
+
         List<TableFill> list = new ArrayList<>();
         TableFill tableFill1 = new TableFill("create_time", FieldFill.INSERT);
         list.add(tableFill1);

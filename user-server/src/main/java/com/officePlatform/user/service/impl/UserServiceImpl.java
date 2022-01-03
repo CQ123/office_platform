@@ -40,6 +40,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //user.setToken(confirmCode);
         user.setActivationTime(ldt);
         user.setLevel(1);
+        QueryWrapper wrapper = new QueryWrapper();
+        wrapper.eq("email",user.getEmail());
+        User user1 = userMapper.selectOne(wrapper);
+        if(user1!=null)return false;
         return userMapper.insert(user)==1;
     }
 
@@ -82,7 +86,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         String email = jsonObject.get("email").toString();
         String confirmCode = jsonObject.get("confirmCode").toString();
         String password = jsonObject.get("password").toString();
-        if(session.getAttribute(email).toString().equals(confirmCode)){
+        String code =  session.getAttribute(email+"confirmCode").toString();
+        if(!code.isEmpty()&&code.equals(confirmCode)){
             QueryWrapper wrapper = new QueryWrapper();
             wrapper.eq("email",email);
             User oldUser= userMapper.selectOne(wrapper);
@@ -103,10 +108,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public boolean updateInfo(User user) {
+    public boolean updateInfo(User user,HttpSession session) {
         QueryWrapper wrapper = new QueryWrapper();
         wrapper.eq("id",user.getId());
         User oldUser = userMapper.selectOne(wrapper);
+        User sessionUser = (User) session.getAttribute(oldUser.getEmail() + "instance");
+        if(sessionUser==null)return false;
         oldUser.setName((user.getName()));
         userMapper.update(oldUser,wrapper);
         return true;

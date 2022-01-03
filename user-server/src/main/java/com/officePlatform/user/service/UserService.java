@@ -23,5 +23,5 @@ public interface UserService extends IService<User> {
     int activateAcount(String token);
     boolean updatePassword(JSONObject jsonObject, HttpSession session);
     User getInfoById(int id);
-    boolean updateInfo(User user);
+    boolean updateInfo(User user,HttpSession session);
 }
